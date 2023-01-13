@@ -1,0 +1,18 @@
+<div class="main">
+    <div class="logo">
+        <img class="image" src="../../../assets/task.PNG" />
+    </div>
+    <div class="form">
+        <form>
+            <mat-card class="card">
+               <mat-form-field class="field" >
+                <input [(ngModel)]="userCredentials.username" name="username" matInput placeholder="Username" required>
+               </mat-form-field>
+               <mat-form-field class="field">
+                   <input [(ngModel)]="userCredentials.password" name="password" matInput placeholder="Password" required>
+               </mat-form-field>
+               <button mat-raised-button color="primary" type="submit" (click)="login()">Login</button>
+            </mat-card>
+        </form>
+    </div>
+</div>
