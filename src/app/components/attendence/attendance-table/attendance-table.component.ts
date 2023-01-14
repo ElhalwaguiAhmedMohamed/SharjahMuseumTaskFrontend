@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AttendenceTable } from 'src/app/models/AttendanceTable';
+import { ActivatedRoute } from '@angular/router';
+import { EmpAttendanceReport, Row } from 'src/app/models/AttendanceTable';
 import { AttendanceService } from 'src/app/services/attendence.service';
 
 @Component({
@@ -10,15 +11,19 @@ import { AttendanceService } from 'src/app/services/attendence.service';
 export class AttendanceTableComponent implements OnInit {
   constructor(
     private attendanceService: AttendanceService,
+    private route: ActivatedRoute
   ) { }
-  table: AttendenceTable[] = [];
+  rows: Row[] = [];
   ngOnInit(): void {
+    console.log("hi");
     this.getAttendanceTable();
   }
   getAttendanceTable() {
-    this.attendanceService.getAttendanceTable().subscribe({
+    let id = parseInt(this.route.snapshot.paramMap.get('id')!);
+    this.attendanceService.getAttendanceTable(id).subscribe({
       next: (data) => {
-        this.table = data;
+        this.rows = data.empAttendanceReport.rows;
+        console.log(this.rows);
       },
       error: (err) => console.log(err),
       complete: () => console.log('Completed retrieving attendance table')

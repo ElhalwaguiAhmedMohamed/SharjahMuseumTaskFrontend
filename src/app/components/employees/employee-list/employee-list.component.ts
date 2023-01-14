@@ -54,4 +54,7 @@ export class EmployeeListComponent implements OnChanges, OnInit {
     this.getEmployees();
   }
 
+  generateAttendanceReport(id: string) {
+    this.router.navigate(['/employees/report', id]);
+  }
 }

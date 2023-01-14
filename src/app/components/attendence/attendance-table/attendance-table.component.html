@@ -1,0 +1,57 @@
+<mat-toolbar class="mat-success">
+    <mat-toolbar-row>
+        <h1 style="padding: 10px;">Employees</h1>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav opened="true" mode="side">
+        <mat-nav-list>
+            <a mat-list-item><p style="font-family: Arial, Helvetica, sans-serif;">Employees</p></a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div style="height: 88vh;">
+            <p-table #dt [value]="rows" [rows]="10" [paginator]="true" [globalFilterFields]="['Name','Email']"
+              responsiveLayout="scroll" [rowHover]="true" dataKey="_id"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+              <ng-template pTemplate="caption">
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="h5">Employee Information </span>
+                  <span class="p-input-icon-left">
+                      <i class="pi pi-search"></i>
+                  </span>
+              </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>
+                    UserId
+                  </th>
+                  <th>
+                    Date
+                  </th>
+                  <th>
+                    First Recorded Time
+                  </th>
+                  <th>
+                    Last Recorded Time
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-row>
+                <tr>
+                  <td>{{row.userId}}</td>
+                  <td>{{row.date}}</td>
+                  <td>{{row.firstRecordedDateTime}}</td>
+                  <td>{{row.lastRecordedDateTime}}</td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="summary">
+                <div class="flex align-items-center justify-content-between">
+                  <!-- In total there are {{employees ? employees.length : 0 }} employees. -->
+                </div>
+              </ng-template>
+            </p-table>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

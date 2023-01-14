@@ -1,6 +1,13 @@
 import { Device } from "./Device";
 import { Employee } from "./Employee";
 
-export class AttendenceTable {
-    constructor(public eventLGUID?: number, public srvdt?: Date, public devdt?: string, public devId?: number, public empId?: number, public employee?: Employee, public device?: Device) { }
+export class EmpAttendanceReportResponse {
+    constructor(public empAttendanceReport: EmpAttendanceReport) { }
+}
+export class EmpAttendanceReport {
+    constructor(public rows: Row[]) { }
+}
+
+export class Row {
+    constructor(public userId?: number, public date?: string, public firstRecordedDateTime?: string, public lastRecordedDateTime?: string) { }
 }

@@ -46,8 +46,9 @@
           <td>{{employee.email}}</td>
           <td>{{employee.phoneNumber}}</td>
           <td>
-            <app-edit-employee [employee]="employee" (loadEmployees)="reload()"></app-edit-employee>
-            <app-delete-employee [employee]="employee" (loadEmployees)="reload()"></app-delete-employee>
+            <app-edit-employee [employee]="employee" (loadEmployees)="reload()" style="padding: 0.1em;"></app-edit-employee>
+            <app-delete-employee [employee]="employee" (loadEmployees)="reload()" style="padding: 0.1em;"></app-delete-employee>
+            <button pButton pRipple icon="pi pi-table" class="p-button-rounded p-button-success mr-2" (click)="generateAttendanceReport(employee.empId)"></button>
           </td>
         </tr>
       </ng-template>
