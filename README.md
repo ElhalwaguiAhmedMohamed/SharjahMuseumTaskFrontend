@@ -1,27 +1,40 @@
-# SharjahMuseumTaskFront
+# SharjahMuseumTask Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
+THe task is to implement a simple employee crud operation and a report for their attendence and to expose an api to do said.
+Allowing admins to login with JWT tokens and to create, update, delete and retrieve eomployees.
+Allowing admins to get a report a specific employee attendence.
 
-## Development server
+## Requirements
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Create an employee setup screen and db table to make CRUD operations for �employees� table with columns �EMPID, Name, Email, PhoneNo, And CRUD operations for
+- �EmployeeAttendance� with columns �EVETLGUID, SRVDT, DEVDT, DEVUID, EMPID�
 
-## Code scaffolding
+## System Arcjitecture
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Used a 3 layer clean architecture to implement the solution
+- Implemented repository pattern and Inverion of control.
+- Implemented unit of work to make it easier dealing with different entities in the system.
 
-## Build
+![Architecture](https://v2.angular.io/resources/images/devguide/architecture/overview2.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Authentication & Authorization
 
-## Running unit tests
+- Used JWT scheme to authenticate and authorize
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Technologies
 
-## Running end-to-end tests
+- Angular
+- c#
+- NET 6 ----> link for backend repo (link to frontend repo (https://github.com/ElhalwaguiAhmedMohamed/SharjahMuseumTask.git))
+- EF 7
+- SQL Server
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## How TO RUN
 
-## Further help
+- download the backend repo.
+- The backend application has some migrations to intiate the database you can use the command `update-database` to run the migrations and create the database. you will just need to change the connection string
+  of the database.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Auhtor
+
+[Mohamed Ahmed Elhalwagui](https://github.com/ElhalwaguiAhmedMohamed)
