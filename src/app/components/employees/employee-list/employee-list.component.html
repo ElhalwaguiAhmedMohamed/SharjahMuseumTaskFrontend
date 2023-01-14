@@ -1,0 +1,60 @@
+<div class="card">
+    <p-toolbar styleClass="mb-4">
+  
+      <app-add-employee (loadEmployees)="reload()"></app-add-employee>
+  
+    </p-toolbar>
+
+    <p-table #dt [value]="employees" [rows]="10" [paginator]="true" [globalFilterFields]="['Name','Email']"
+      responsiveLayout="scroll" [rowHover]="true" dataKey="_id"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+      <ng-template pTemplate="caption">
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="h5">Employee Information </span>
+          <span class="p-input-icon-left">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="filterGlobal($any($event.target).value, 'contains')" placeholder="Global Search" />`
+          </span>
+      </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Image</th>
+          <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon>
+          </th>
+          <th>
+            Email
+          </th>
+          <th>
+            Phone Number
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-employee>
+        <tr>
+          <td>
+            <img [src]="employee.Photo" *ngIf="employee.photo; else defaultImg" class="shadow-4" width="70"
+              height="70" />
+            <ng-template #defaultImg>
+              <img [src]="defaultImgSrc" class="shadow-4" width="70" height="70" />
+            </ng-template>
+          </td>
+          <td>{{employee.name}}</td>
+          <td>{{employee.email}}</td>
+          <td>{{employee.phoneNumber}}</td>
+          <td>
+            <app-edit-employee [employee]="employee" (loadEmployees)="reload()"></app-edit-employee>
+            <app-delete-employee [employee]="employee" (loadEmployees)="reload()"></app-delete-employee>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+          In total there are {{employees ? employees.length : 0 }} employees.
+        </div>
+      </ng-template>
+    </p-table>
+  </div>

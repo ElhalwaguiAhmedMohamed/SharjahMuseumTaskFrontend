@@ -11,7 +11,7 @@
                <mat-form-field class="field">
                    <input [(ngModel)]="userCredentials.password" name="password" matInput placeholder="Password" required>
                </mat-form-field>
-               <button mat-raised-button color="primary" type="submit" (click)="login()">Login</button>
+               <button mat-raised-button color="primary" type="submit" [routerLink]="goToPage" (click)="login()">Login</button>
             </mat-card>
         </form>
     </div>

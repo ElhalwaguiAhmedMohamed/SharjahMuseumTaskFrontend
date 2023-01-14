@@ -1,0 +1,3 @@
+<button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()"></button>
+<app-employee-form [employee]="employee" [employeeDialog]="employeeDialog" (saveEmployee)="saveEmployee($event)"
+    (hideDialog)="hideDialog()"></app-employee-form>

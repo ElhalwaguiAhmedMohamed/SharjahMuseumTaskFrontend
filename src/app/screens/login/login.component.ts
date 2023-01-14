@@ -11,8 +11,9 @@ import { LoginReponse } from 'src/app/models/LoginResponse';
 })
 export class LoginComponent implements OnInit {
   userCredentials: UserCredentials = new UserCredentials('', '');
+  goToPage: string;
   constructor(private loginService: LoginService, private router: Router) {
-
+    this.goToPage = '';
   }
   ngOnInit(): void { }
 
@@ -22,9 +23,10 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (data: LoginReponse) => {
           localStorage.setItem('userToken', data.token);
+          this.router.navigate(['/employees'])
         },
         error: (err) => console.log(err),
-        complete: () => console.log('Login completed')
+        complete: () => console.log('Login completed', this.goToPage)
       })
   }
 }
